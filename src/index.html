@@ -3,14 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
+  <title>Daños por Sistema Frontal 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <main class="main">
-    <h1 class="main__h1">Hello, world!</h1>
+
+<div class="app">
+
+  <!-- =====================  SIDEBAR  ===================== -->
+  <nav class="sidebar" id="sidebar" aria-label="Índice de la presentación">
+    <div class="sidebar__header">
+      <button class="sidebar__cerrar" id="btnCerrarSidebar" aria-label="Ocultar menú" type="button">&#8592;</button>
+      <p class="sidebar__eyebrow">Historia</p>
+      <h1 class="sidebar__titulo">Daños por Sistema Frontal 2026</h1>
+    </div>
+
+    <ul class="sidebar__lista" id="listaSlides"><!-- generado por JS --></ul>
+
+    <div class="sidebar__footer">
+
+      <div class="sidebar__progreso-track">
+        <div class="sidebar__progreso-fill" id="progresoFill"></div>
+      </div>
+      <p class="sidebar__progreso-texto" id="progresoTexto">01 / 10</p>
+    </div>
+  </nav>
+
+  <!-- Botón hamburguesa -->
+  <button class="btn-menu btn-menu--activo btn-menu--con-sidebar" id="btnMenu" aria-label="Mostrar u ocultar menú" aria-expanded="true">
+    <span class="btn-menu__barra"></span>
+    <span class="btn-menu__barra"></span>
+    <span class="btn-menu__barra"></span>
+  </button>
+
+  <!-- =====================  ESCENARIO DE SLIDE  ===================== -->
+  <main class="escenario" id="escenario">
+    <span class="marco-esquina marco-esquina--tl"></span>
+    <span class="marco-esquina marco-esquina--tr"></span>
+    <div class="ctrl-letra" id="ctrlLetra">
+      <button class="ctrl-letra__btn" id="btnLetraMenos" aria-label="Disminuir tamaño de letra" type="button">A⁻</button>
+      <button class="ctrl-letra__btn" id="btnLetraMas" aria-label="Aumentar tamaño de letra" type="button">A⁺</button>
+      <button class="ctrl-letra__btn ctrl-letra__btn--modo" id="btnModo" aria-label="Alternar modo oscuro" type="button">☾</button>
+    </div>
+    <span class="marco-esquina marco-esquina--bl"></span>
+    <span class="marco-esquina marco-esquina--br"></span>
+
+    <button class="flecha flecha--izq" id="btnAnterior" aria-label="Diapositiva anterior">&#8592;</button>
+
+    <div id="contenedorSlide"><!-- la diapositiva activa se inyecta aquí --></div>
+
+    <button class="flecha flecha--der" id="btnSiguiente" aria-label="Diapositiva siguiente">&#8594;</button>
   </main>
-  <script type="module" src="index.js"></script>
+
+</div>
+
+<!-- =====================  LIGHTBOX  ===================== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox__cerrar" id="lightboxCerrar" aria-label="Cerrar">&times;</button>
+  <img class="lightbox__img" id="lightboxImg" src="" alt="">
+</div>
+
+<!-- =====================  PLANTILLAS DE DIAPOSITIVAS  ===================== -->
+
+<template data-slide data-codigo="01" data-titulo="Portada" data-layout="portada" data-densidad="baja">
+  <div class="slide portada">
+    <div class="portada__contenido">
+      <h2 class="slide__titulo">Daños por Sistema Frontal 2026</h2>
+      <p class="slide__subtitulo"></p>
+      <div class="portada__linea"></div>
+    </div>
+  </div>
+</template>
+
+<template data-slide data-codigo="02" data-titulo="Goteras en la Logia" data-layout="dual-video" data-densidad="baja">
+  <div class="slide slide--dual-video">
+    <h2 class="slide__titulo">Goteras en la Logia</h2>
+    <div class="dual-video__grid">
+      <div class="dual-video__item">
+        <video controls preload="metadata" class="dual-video__video">
+          <source src="assets/img/01_logia_gotera.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="dual-video__item">
+        <video controls preload="metadata" class="dual-video__video">
+          <source src="assets/img/04_logia_gotera_calefon.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-slide data-codigo="03" data-titulo="Goteras en la Logia - Evidencias" data-layout="dual-foto" data-densidad="baja">
+  <div class="slide slide--dual-foto">
+    <h2 class="slide__titulo">Goteras en la Logia - Evidencias</h2>
+    <div class="dual-foto__grid">
+      <div class="dual-foto__item">
+        <img class="dual-foto__img" src="assets/img/02_logia_gotera.jpg" alt="Logia con goteras durante el inicio del sistema frontal" data-lightbox>
+        <p class="dual-foto__caption">Inicio del sistema frontal - filtración de lluvia</p>
+      </div>
+      <div class="dual-foto__item">
+        <img class="dual-foto__img" src="assets/img/03_logia_gotera.jpg" alt="Logia seca con presencia de hongo por filtración de lluvia" data-lightbox>
+        <p class="dual-foto__caption">Posterior - aparición de hongo por filtración</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-slide data-codigo="04" data-titulo="Filtración por Calefón" data-layout="galeria-foto" data-densidad="baja">
+  <div class="slide slide--galeria-foto">
+    <h2 class="slide__titulo">Filtración de Agua por Calefón</h2>
+    <div class="galeria-foto__grid">
+      <div class="galeria-foto__item">
+        <img class="galeria-foto__img" src="assets/img/05_logia_gotera_calefon.jpg" alt="Vista general de filtración en calefón" data-lightbox>
+        <p class="galeria-foto__caption">Estado general del calefón con filtración</p>
+      </div>
+      <div class="galeria-foto__item">
+        <img class="galeria-foto__img" src="assets/img/06_logia_gotera_calefon.jpg" alt="Detalle de filtración de agua en calefón" data-lightbox>
+        <p class="galeria-foto__caption">Posible lugar de filtración</p>
+      </div>
+      <div class="galeria-foto__item">
+        <img class="galeria-foto__img" src="assets/img/06a_logia_gotera_calefon.jpg" alt="Detalle de daño por filtración en calefón" data-lightbox>
+        <p class="galeria-foto__caption">Ducto del calefón sin cubierta</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-slide data-codigo="05" data-titulo="Gotera Pieza Principal" data-layout="imagen-centro" data-densidad="baja">
+  <div class="slide slide--imagen-centro">
+    <h2 class="slide__titulo">Gotera en la Pieza Principal</h2>
+    <img class="slide__imagen" src="assets/img/07_pieza_principal.jpg" alt="Gotera en la pieza principal" data-lightbox>
+  </div>
+</template>
+
+<template data-slide data-codigo="06" data-titulo="Cielo Falso y Piso Superior" data-layout="dual-foto" data-densidad="baja">
+  <div class="slide slide--dual-foto">
+    <h2 class="slide__titulo">Cielo Falso en el Piso Superior Húmedo</h2>
+    <div class="dual-foto__grid">
+      <div class="dual-foto__item">
+        <img class="dual-foto__img" src="assets/img/09_piso_superior.jpg" alt="Cielo falso húmedo en piso superior" data-lightbox>
+        <p class="dual-foto__caption">Cielo falso con humedad</p>
+      </div>
+      <div class="dual-foto__item">
+        <img class="dual-foto__img" src="assets/img/10_piso_superior.jpg" alt="Piso superior con filtración" data-lightbox>
+        <p class="dual-foto__caption">Cielo falso con humedad</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-slide data-codigo="07" data-titulo="Cielo Falso Humedo Piso Superior" data-layout="imagen-centro" data-densidad="baja">
+  <div class="slide slide--imagen-centro">
+    <h2 class="slide__titulo">Cielo Falso Humedo Piso Superior</h2>
+    <img class="slide__imagen" src="assets/img/08_piso_superior.jpg" alt="Cielo falso húmedo en piso superior" data-lightbox>
+  </div>
+</template>
+
+<template data-slide data-codigo="08" data-titulo="Canal Obstruido" data-layout="dual-foto" data-densidad="baja">
+  <div class="slide slide--dual-foto">
+    <h2 class="slide__titulo">Canal Obstruido</h2>
+    <div class="dual-foto__grid">
+      <div class="dual-foto__item">
+        <img class="dual-foto__img" src="assets/img/11_piso_superior.jpg" alt="Canal obstruido vista 1" data-lightbox>
+        <p class="dual-foto__caption">Estado del canal</p>
+      </div>
+      <div class="dual-foto__item">
+        <img class="dual-foto__img" src="assets/img/12_piso_superior.jpg" alt="Canal obstruido vista 2" data-lightbox>
+        <p class="dual-foto__caption">Detalle de obstrucción</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-slide data-codigo="09" data-titulo="Techo sin problema 1/2" data-layout="dual-foto" data-densidad="baja">
+  <div class="slide slide--dual-foto">
+    <h2 class="slide__titulo">Techo sin problema 1/2</h2>
+    <div class="dual-foto__grid">
+      <div class="dual-foto__item">
+        <img class="dual-foto__img" src="assets/img/14_techo.jpg" alt="Techo sin problema vista 1" data-lightbox>
+        <p class="dual-foto__caption">Estado del techo</p>
+      </div>
+      <div class="dual-foto__item">
+        <img class="dual-foto__img" src="assets/img/15_techo.jpg" alt="Techo sin problema vista 2" data-lightbox>
+        <p class="dual-foto__caption">Detalle del techo</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template data-slide data-codigo="10" data-titulo="Techo sin problema 2/2" data-layout="dual-foto" data-densidad="baja">
+  <div class="slide slide--dual-foto">
+    <h2 class="slide__titulo">Techo sin problema 2/2</h2>
+    <div class="dual-foto__grid">
+      <div class="dual-foto__item">
+        <img class="dual-foto__img" src="assets/img/16_techo.jpg" alt="Techo sin problema vista 3" data-lightbox>
+        <p class="dual-foto__caption">Estado del techo</p>
+      </div>
+      <div class="dual-foto__item">
+        <img class="dual-foto__img" src="assets/img/17_techo.jpg" alt="Techo sin problema vista 4" data-lightbox>
+        <p class="dual-foto__caption">Detalle del techo</p>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="index.js"></script>
 </body>
 </html>
