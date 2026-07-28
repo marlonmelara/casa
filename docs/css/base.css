@@ -1,0 +1,121 @@
+/* stylelint-disable custom-property-empty-line-before, declaration-block-single-line-max-declarations, color-hex-length, value-keyword-case, order/properties-order */
+
+/* ==========================================================================
+   TOKENS DE DISEÑO
+   Sigue viviendo en el mundo "plano de arquitecto / libro de cuentas":
+   cuadrícula de fondo, escuadras de esquina, tipografía condensada y mono.
+   Para esta serie de clases se suma un segundo acento —azul manuscrito—
+   que codifica tipo de contenido (ver .slide__eyebrow--*), y tokens propios
+   para el menú lateral, que se mantiene oscuro sin importar el tema.
+   ========================================================================== */
+:root{
+  --color-paper:       #EDF1F5;  /* fondo principal, gris-azulado de plano */
+  --color-paper-alt:    #E2E8EF; /* fondo alterno para tarjetas */
+  --color-surface:      #FFFFFF; /* superficies elevadas */
+  --color-ink:          #16243A; /* texto principal, azul-tinta oscuro */
+  --color-ink-soft:     #4C5C73; /* texto secundario */
+  --color-line:         #C7D0DC; /* líneas de cuadrícula / bordes */
+  --color-line-strong:  #9FACBE;
+
+  --color-accent:       #E2611F; /* naranja — concepto / idea central */
+  --color-accent-soft:  #FBE2D0;
+  --color-accent-2:      #35578C; /* azul manuscrito — contexto / dato histórico */
+  --color-accent-2-soft: #DEE6F3;
+  --color-confirm:      #2E6B52; /* verde — fuente primaria / cita */
+  --color-confirm-soft: #DCEAE3;
+  --color-neutral-badge:      #6B7688; /* gris — metacognición / autoevaluación */
+  --color-neutral-badge-soft: #E4E7EC;
+
+  /* ---- Menú lateral: siempre oscuro, independiente del tema claro/oscuro ---- */
+  --sidebar-bg:          #101B2C;
+  --sidebar-bg-header:   #0C1522;
+  --sidebar-ink:         #E9EDF4;
+  --sidebar-ink-soft:    #8C99AD;
+  --sidebar-line:        rgb(255 255 255 / 10%);
+  --sidebar-hover-bg:    rgb(255 255 255 / 6%);
+  --sidebar-active-bg:   rgb(226 97 31 / 16%);
+  --sidebar-accent:      #E2611F;
+
+  --font-display: 'Archivo Narrow','Oswald','Arial Narrow',sans-serif;
+  --font-body:    'Inter','Segoe UI',Helvetica,Arial,sans-serif;
+  --font-mono:    'IBM Plex Mono','Consolas','Courier New',monospace;
+
+  --sidebar-w: 296px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 40px;
+  --space-6: 64px;
+  --transition: 320ms cubic-bezier(.4,0,.2,1);
+
+  /* Tokens de espacio adaptativo */
+  --imagen-ancho-sm: clamp(180px, 24vw, 260px);
+  --imagen-ancho-md: clamp(260px, 30vw, 360px);
+  --imagen-ancho-lg: clamp(300px, 40vw, 460px);
+  --slide-padding: clamp(var(--space-4), 4vw, var(--space-6));
+}
+
+*,*::before,*::after{ box-sizing: border-box; }
+
+html{
+  transition: background var(--transition), color var(--transition),
+              border-color var(--transition), box-shadow var(--transition);
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  overflow:hidden;
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* ==========================================================================
+   DARK MODE
+   Nota: las variables --sidebar-* NO se redefinen aquí a propósito, para
+   que el menú lateral permanezca siempre oscuro sin importar el tema.
+   ========================================================================== */
+[data-theme="dark"]{
+  --color-paper:       #0F172A;
+  --color-paper-alt:   #1E293B;
+  --color-surface:     #1E293B;
+  --color-ink:         #E2E8F0;
+  --color-ink-soft:    #94A3B8;
+  --color-line:        #334155;
+  --color-line-strong: #475569;
+}
+
+/* stylelint-disable selector-class-pattern, color-function-notation, color-function-alias-notation, alpha-value-notation */
+[data-theme="dark"] .comparacion__col--acento{
+  background: linear-gradient(180deg, rgba(226,97,31,0.15), #1E293B 60%);
+}
+
+[data-theme="dark"] .comparacion__col--acento .comparacion__etiqueta{
+  color: var(--color-accent);
+}
+
+[data-theme="dark"] .tarjeta__badge--operativo{
+  background: rgba(226,97,31,0.2);
+  color: #FBE2D0;
+}
+
+[data-theme="dark"] .tarjeta__badge--contable{
+  background: rgba(46,107,82,0.25);
+  color: #DCEAE3;
+}
+
+[data-theme="dark"] .tarjeta__badge--tributario{
+  background: rgba(226,97,31,0.2);
+  color: #FBE2D0;
+}
+
+[data-theme="dark"] .slide__eyebrow--dato{ color:#7C97C7; }
+[data-theme="dark"] .slide__eyebrow--fuente{ color:#6FB79A; }
+[data-theme="dark"] .slide__enlace-ext-icono{ background: rgba(226,97,31,0.2); }
+/* stylelint-enable selector-class-pattern, color-function-notation, color-function-alias-notation, alpha-value-notation */
