@@ -1,0 +1,32 @@
+{
+  "name": "casa",
+  "version": "1.0.0",
+  "description": "Boilerplate project: casa",
+  "type": "module",
+  "scripts": {
+    "dev": "servor src index.html 1234 --reload",
+    "build": "mkdir -p docs && cp -r src/* docs/",
+    "lint": "pnpm lint:js && pnpm lint:css",
+    "lint:js": "oxlint",
+    "lint:js:fix": "oxlint --fix",
+    "format": "oxfmt .",
+    "lint:css": "stylelint \"src/**/*.{css,scss}\"",
+    "lint:css:fix": "stylelint \"src/**/*.{css,scss}\" --fix",
+    "lint:all": "pnpm lint:js:fix && pnpm lint:css:fix && pnpm format"
+  },
+  "devDependencies": {
+    "oxfmt": "^0.55.0",
+    "oxlint": "^1.70.0",
+    "servor": "^4.0.2",
+    "stylelint": "^17.13.0",
+    "stylelint-config-standard": "^40.0.0",
+    "stylelint-order": "^8.1.1"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.6.0",
+      "onFail": "download"
+    }
+  }
+}

@@ -1,0 +1,38 @@
+/* stylelint-disable selector-class-pattern */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, sans-serif;
+  color: #e4e4e7;
+  background-color: #0f0f1e;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
